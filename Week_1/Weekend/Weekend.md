@@ -256,6 +256,9 @@ module.export = {
 
 __Warning__
 > In order to test in console you must require('chai'). However, there is no require in browser-based JavaScript. When testing in browser we do not include require('chai'). If we do include it in the browser, it will cause an error.
+
+---
+
 ## Javascript things
 ``` js
 //In javascript, you could check if an object has a specific key by doing
@@ -282,3 +285,72 @@ order.items
 //you could also assign a variable with a trenaory operator
 const shipping = totalItems > 100 ? 0 : shippingItem.price
 ```
+
+---
+
+### --save-dev vs --save
+* The difference between --save and --save-dev may not be immediately noticeable if you have tried them both on your own projects. So here are a few examples...
+
+* Lets say you were building an app that used the `moment` package to parse and display dates. Your app is a scheduler so it really `needs` this package to run, `as in: cannot run without it`. In this case you would use
+
+>npm install moment --save
+This would create a new value in your package.json
+``` json
+"dependencies": {
+   ...
+   "moment": "^2.17.1"
+}
+```
+When you are developing, it really helps to use tools such as test suites and may need jasmine-core and karma. In this case you would use
+
+>npm install jasmine-core --save-dev
+
+>npm install karma --save-dev
+
+This would also create a new value in your package.json
+``` json
+"devDependencies": {
+    ...
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+}
+```
+You do `not need the test suite to run the app in its normal state`, so it is a --save-dev type dependency, nothing more
+
+---
+
+### how to read git diff
+```
+diff --git a/diff_test.txt b/diff_test.txt
+index 6b0c6cf..b37e70a 100644
+--- a/diff_test.txt
++++ b/diff_test.txt
+@@ -1 +1 @@
+-this is a git diff test example
++this is a diff example
+```
+1) Comparsion input
+> diff --git a/diff_test.txt b/diff_test.txt
+
+* This line displays the input sources of the diff. We can see that a/diff_test.txt and b/diff_test.txt have been passed to the diff.
+
+2) Meta data 
+> index 6b0c6cf..b37e70a 100644
+
+* This line displays some internal Git metadata. You will most likely not need this information. The numbers in this output correspond to Git object version hash identifiers.
+
+3) Marker for changes
+>--- a/diff_test.txt
+
+>+++ b/diff_test.txt
+
+* These lines are a legend that assigns symbols to each diff input source. In this case, changes from a/diff_test.txt are marked with a --- and the changes from b/diff_test.txt are marked with the +++ symbol.
+
+4) Diff chunks
+> @@ -34,6 +34,8 @@
+
+* this means we `extracted` 6 lines `from` number 34
+* and `add` 8 lines `start` at line number 34
+
+* Invoking git diff `without` a file path will compare changes across the entire repository. By default `git diff` shows you any uncommited changes since the last `commit`
+* use git diff Head .path/to/file to see changes for a specific file
