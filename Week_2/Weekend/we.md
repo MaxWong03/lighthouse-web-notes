@@ -65,3 +65,9 @@ boundFunction();
    * 
    */
 ```
+
+## How JS Actually Works
+* JS is a single threaded non blocking asynchronous concurrent runtime
+* JS has a call stack, an event loop, a callback queue, and some other apis and stuff
+
+![image](js.png)
