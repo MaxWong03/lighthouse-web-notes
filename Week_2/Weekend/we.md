@@ -85,4 +85,32 @@ boundFunction();
 * Event loop: push the call back of that async code in the task queue onto the stack if the stack is cleared
 * The call back is then executed and get cleared
 * For the DOMS, the DOM stay in the webapi and whenever the dom event is triggered it pushes its callback into the taskqueue (they cant do two things at once, so this is gonna cause a race condition)
-* 
+
+# Promise review
+* The promise object is used for `deferred` and asynchronous computations
+* JS's thread ensure javscript runs synchronously (things run in a single line)
+* Promise can only settle once
+* Promise execute in the main thread (but still in web api. but can potentially blocking)
+* Promise decides what will happen when an asynchronous task settles
+
+``` js
+new Promise( (resolve, reject) => {
+  let img = documnet.createElement('img');
+  img.src = 'image.jpg';
+  img.onload =  ;
+  img.onerror = reject;
+  document.body.appendChild(img);
+})
+.then(finishLoading)
+.catch(showAlternate Image)
+
+```
+1) In this Example, the promise either resolve or reject base on whether or not the image onLoad or onError
+2) The promise is resolved, but it isnt fulfilled / settled just yet, because it still has some left over code to execute after it has resolved or rejected
+3) it then executes another line of code documnet.body.appendChild
+4) then when that code finshes, the promise has officially fulfilled / settlted
+5) and the THEN gets triggerd, because then only gets triggered when a prommise is fulfilled / setttled
+6) Being able to call resolve and reject allows you to define what consitutes reject and resolve in your promise
+7) The value passed into resolve and reject is the value THEN and CATCH receives once a promise fulfills
+8) If a promised P is passed to resolve, P gets executes FIRST and the resolved value of P will be passed to the next then
+9) As soon as a promise rejects, JS skips to the .catch in the chain, that means you just need one .catch to catch all promise errors 
