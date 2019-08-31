@@ -114,3 +114,83 @@ new Promise( (resolve, reject) => {
 7) The value passed into resolve and reject is the value THEN and CATCH receives once a promise fulfills
 8) If a promised P is passed to resolve, P gets executes FIRST and the resolved value of P will be passed to the next then
 9) As soon as a promise rejects, JS skips to the .catch in the chain, that means you just need one .catch to catch all promise errors 
+
+
+
+
+## JS Best Practices
+``` js
+//put obj short hand notation first 
+const anakinSkywalker = 'Anakin Skywalker';
+const lukeSkywalker = 'Luke Skywalker';
+
+const obj = {
+  anakinSkywalker,
+  lukeSkywalker,
+  ep: 1,
+  season: 2
+}
+
+//use method shorthand
+const obj2 = {
+  addvalue(value) {
+    return value + 1;
+  }
+}
+
+//use computed property names when creating objects with dynamic property name
+
+getKey(k) => {
+  return `a key name ${k}`;
+}
+
+const obj = {
+  id: 5,
+  name: 'San Francisco',
+  [getKey('myKey')]: true
+  //square bracket notation because its gonna be a string
+  //this allows you to generate dynamic property key name
+}
+
+//only quote properties that are invalid identifier
+const good = {
+  foo: 3,
+  bar: 4,
+  'date-blah': 5
+}
+
+//use push instead of direct assignment
+const someStack = [];
+someStack[someStack.length] = 'abc' //bad
+someStack.push(abc) //good
+
+//use array spreads ... to copy arrays
+const itemsCopy = [...items]
+
+```
+### JS Things
+``` js 
+let a = [1,2,3,4,5];
+console.log(...a) //print 1 , 2, 3, ,4, 5
+
+let obj = {a: 1, b: 2};
+console.log({...obj, c:3}) //{a: 1, b: 2, c:3}
+
+//array descturcting
+const arr = [1, 2, 3, 4];
+const [a,b,c,d] = arr;
+a = 1, b = 2, c = 3, d = 4
+const [first, second] = arr; 
+first = 1, second = 2
+
+//object desctructing
+processInput(input) => {
+  return {left, right, top, bottom};
+}
+
+//the caller selects only the data they need
+const {left, top} = processInput(input);
+
+```
+> Read Open Source Code to learn best practices 
+
