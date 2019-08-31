@@ -71,3 +71,18 @@ boundFunction();
 * JS has a call stack, an event loop, a callback queue, and some other apis and stuff
 
 ![image](js.png)
+
+# The Engine
+* `Heap` is the memory allocation and mangament 
+* `Callstack` is inside of v8
+  - One thread == one call stack == one thing at a time
+  - Callstack is how JS runtime figures out what function is JS currently workign through and when the function is finished where the function returns to   
+  - The deepest function is at the bottom, and the most recent function that generates the current error is at the top of the call stack
+
+# Concurrency & the Event Loop
+* Everytime there is a async code, JS push the task from stack to the webapi (by firing a thread), and put the rest of the code on the stack
+* When the async code is finished from the webapi, and puts its callback in the task queue / call back queue
+* Event loop: push the call back of that async code in the task queue onto the stack if the stack is cleared
+* The call back is then executed and get cleared
+* For the DOMS, the DOM stay in the webapi and whenever the dom event is triggered it pushes its callback into the taskqueue (they cant do two things at once, so this is gonna cause a race condition)
+* 
