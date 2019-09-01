@@ -299,8 +299,39 @@ class Deposit extends Transaction {
 4) The root server will guide resolving name server to TLD (top level domain name server)
 5) TLD will then guide the resolvling name server to the AUS (authorative name server) that store the URL IP address
 6) Resolving name server then goes to the AUS and get a response (ip address) from AUS, cache it in memory, give it back to the OS and the OS gives it back to the browser then makes a collection to that IP address
-
  
-
 ## Refactoring 
 * A good example of refactoring is when the implementation of classes or methods changes, but the way you create instances, the interface, the driver code have zero change
+  
+# Express Server
+``` js 
+const express = require('express'); //requiring the express package
+const app = express(); //starting the express server
+const port = 3000; //specify the ports your server is listening to
+
+// "/" will indicate the landing page
+//in which if the server sees a connection to the landing page, it will then send a response to the clients
+//the response in this case is hello world
+app.get("/", (req, res) => {
+  res.send("Hello Word!");
+});
+
+/**
+ * "/parks" here is another page at the address, /parks
+ * so when a client request localhost:3000/parks
+ * the server sees that request / connection
+ * and will send a response being the parks you have seen
+ * so in this case, app.get("/parks") allows you to create a new page address and decide what response you want to send back to the client
+ * */
+
+app.get("/parks", (req, res) => {
+  res.send("The parks you have seen");
+});
+
+
+//here your app server is listening to 3000
+app.listen(port, () => {
+  console.log("server running);
+});
+
+```
