@@ -109,10 +109,10 @@ let blabber = bormoir.speak
 blabber()
 /**
  * The above code will print out undefined
- * because here you are creating a property speak in the boromir object
- * but you are assinging to the reference of the memory address in which talk is stored
- * so when you call it, the this keyword is binded to the global object, in whcih there is no property sound 
- * 
+ * because when you do blabber = bormoir.speak
+ * you are esentially doing blabber = talk
+ * and when you do that, the talk is in the global scope and thus the this keyword is pointing to the global object
+ *
  */
 
 ```
