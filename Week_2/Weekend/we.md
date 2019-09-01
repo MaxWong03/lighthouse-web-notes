@@ -1,5 +1,7 @@
-# Objects in Javscript
+# Objects in Javscrip
 
+## OOP
+* Use `Dependency Injection`Which means passing an object the things it needs rather than having the object access them itselfThat makes for code much more modular and testable
 
 ## Bind
 ### How the THIS keyword works with Object Literals and BIND
@@ -194,3 +196,99 @@ const {left, top} = processInput(input);
 ```
 > Read Open Source Code to learn best practices 
 
+# Curl
+* curl is used to make HTTP requests to given URL and it outputs the response, it allows you to see the URL
+* adding the -i flag allows you to inspect the response header 
+
+```
+curl -i https://ipvigilante.com/8.8.8.8
+
+header:
+
+HTTP/1.1 200 OK
+Server: nginx/1.16.0
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-Control: no-cache, private
+X-RateLimit-Limit: 60000
+X-RateLimit-Remaining: 59999
+Date: Sat, 31 Aug 2019 23:56:06 GMT
+
+body:
+
+{"status":"success","data":{"ipv4":"8.8.8.8","continent_name":"North America","country_name":"United States","subdivision_1_name":"California","subdivision_2_name":null,"city_name":"Mountain View","latitude":"37.38600","longitude":"-122.08380"}}
+```
+
+## OOP
+* Use `Dependency Injection`
+* Which means passing an object the things it needs rather than having the object access them itself
+* That makes for code much more modular and testable
+* Unless you want your subclass to override the constructor inside ways for whatever reason, you dont have to include the constructor in your subclasses and call super
+* That is because the subclass extends the state and behaviour of the super class, so when it extends the superclass it alreadys inherited the constructor methods
+* The reamining code in the subclasses is logic that could not be shared with the others
+
+``` js 
+/**
+ * Here, by storing all the transaction in an array ...
+ * the get keyword can then calculate balance on the fly
+ * instead of keeping tracks of the balance
+ * This is extremely flexible because we dont know how many transaction there will be, and it doesnt matter
+ * the get handles the calculating of the balance for us and its flexible in a way that it takes into the # of transaction there is into account
+ * The add Transaction opens up a way for the Transaction class to interact with the account class by pushing the transaction into the array that stores all the transaction
+ * 
+ * */
+class Account {
+  constructor(username) {
+    this.username = username;
+    this.transaction = [];
+  }
+  get balance() {
+    const reducer = (prev, curr) => prev + curr;
+    return this.transaction.reduce(reducer, 0);
+  }
+  addTransaction(transaction) {
+    this.transactions.push(transaction);
+  }
+}
+class Transaction {
+  constructor(account, amount) {
+    this.account = account;
+    this.amount = amount;
+  }
+  commit() {
+    /**
+     * Because in a function, the THIS keyword refers to the contect in which it is called
+     * A Transaction is an abstract class so it will never call this function
+     * Instead it is the subclass who is going to call this function
+     * Therefore, when the subclass Withdrawl and Deposit call this commit function, the this keyword is going to bind to (refers to) the the WithDrawl class and Deposit Class
+     * Because that is where the commit function will be called
+     * So it results, this.value will not be undefined
+     * But it will be the value defined by the getter below
+     * * And you dont even have to worry about updating the balance because when we want to retrieve the account will automatically calcualte the balance for us on the fly
+     */
+    this.account.addTransaction(this.value);
+  }
+}
+
+class Withdrawal extends Transaction {
+  get value() {
+    return -this.amount;
+  }
+}
+
+class Deposit extends Transaction {
+  get value() {
+    return this.amount;
+  }
+}
+/**
+ * The get keyword here is actually very clever
+ * it allows one superclass to generalize the fact that there is an amount for all transaction
+ * But it determines the value to + or - depending on what kind of transaction it is, and that is done through the get keyword
+ * The superclass can then use this.value in the commit function to then again generalize one common commit, but depending on whether withDrawl or Deposit calls the commit methods, it will have different side effect
+ */
+```
+
+## Refactoring
+* A good example of refactoring is when the implementation of classes or methods changes, but the way you create instances, the interface, the driver code have zero change
