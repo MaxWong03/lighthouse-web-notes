@@ -68,6 +68,55 @@ boundFunction();
    */
 ```
 
+### Example of THIS and BIND
+* `bind` is a way to be extremely explicit about what we mean by `this`
+* `this` is determined at the `time of the call` and its context sensitive
+* beacuse a function is just a value in JS, it can be passed around
+* Therefore, it doesnt determine what the `this` keyword is until it is being called
+* So if you want that function to be speficially refer to a certain object, you would have to use `bind`
+
+``` js
+let talk = function() {
+  console.log(this.sound)
+};
+
+let boromir = {
+  sound: "one does not walk into modor",
+  speak: talk
+};
+
+
+boromir.speak();
+
+/**
+ * The above code will print out one does not walk into modor
+ * Because rememebr, function is just a value in JS
+ * so we passed the value of talk inside of boromir, and making it a property of bormoir
+ * so when boromir calls the method speak, the this keyword is then binded to the boromir object, which does have the property sound
+ */
+
+
+let talk = function() {
+  console.log(this.sound);
+}
+
+let boromir = {
+  sound: "one does not simply walk into mordor"
+}
+
+boromir.speak = talk;
+let blabber = bormoir.speak
+blabber()
+/**
+ * The above code will print out undefined
+ * because here you are creating a property speak in the boromir object
+ * but you are assinging to the reference of the memory address in which talk is stored
+ * so when you call it, the this keyword is binded to the global object, in whcih there is no property sound 
+ * 
+ */
+
+```
+
 ## How JS Actually Works
 * JS is a single threaded non blocking asynchronous concurrent runtime
 * JS has a call stack, an event loop, a callback queue, and some other apis and stuff
