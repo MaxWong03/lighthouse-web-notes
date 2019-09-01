@@ -290,5 +290,17 @@ class Deposit extends Transaction {
  */
 ```
 
-## Refactoring
+## DNS (Domain Name System)
+* A web URL is an `alias` for an `IP address` that `requests` can be `routed` to
+* DNS transaltes URL names into IP address numbers
+1) When you first enter an URL into your browser, your computer will first determined whether or not they know the IP address already
+2) If they both dont know, the OS ask the resolving name server for the URL ip address
+3) If it does not, the RNS will ask the ROOT server
+4) The root server will guide resolving name server to TLD (top level domain name server)
+5) TLD will then guide the resolvling name server to the AUS (authorative name server) that store the URL IP address
+6) Resolving name server then goes to the AUS and get a response (ip address) from AUS, cache it in memory, give it back to the OS and the OS gives it back to the browser then makes a collection to that IP address
+
+ 
+
+## Refactoring 
 * A good example of refactoring is when the implementation of classes or methods changes, but the way you create instances, the interface, the driver code have zero change
