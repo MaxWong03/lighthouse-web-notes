@@ -159,3 +159,39 @@ $( "form" ).on( "submit", function( event ) {
 ```
 * the soonest that event bubbling can be stopped is when the event reaches the element that is delegating it
 * an `event object` contains a `property` called `originalEvent`. Which is the `event object` that the `browser` itself `created`. This is `useful` for `touch events` on mobile devices and tablets
+
+# Debugging
+* Start by reproducing the issue 
+* Find the series of  actions that consistently reproduces the bug
+
+## Chrom Dev Tool Debugging
+``` js 
+function updateHeader() {
+  var day = new Date().getDay();
+  var name = getName(); // A
+  updateName(name); // D
+}
+function getName() {
+  var name = app.first + ' ' + app.last; // B
+  return name; // C
+}
+```
+
+* `Step Over`: If you are `paused on A`, `step over` will `executes` all the `codes` `in the function` that `you are stepping over` (running B and C), then `paused on D`.
+  - Used when `paused on` a line of `code` `containing` a `function` that is `not relevant` to the problem you are debugging, click `Step over` to `execute` the `function` `without stepping into it`
+* `Step into`: If you are `paused on A`, `step into` executes the line you are paused on, then `paused on B`
+  - Used when `paused on` a line of `code` `containing` a `function` that is `related` to the problem you are debugging, click `Step into` to investigate that function further
+
+``` js
+function updateHeader() {
+  var day = new Date().getDay();
+  var name = getName();
+  updateName(name); // C
+}
+function getName() {
+  var name = app.first + ' ' + app.last; // A
+  return name; // B
+}
+```
+* `Step out of line`: If you are `paused on A`, `step out` will `executes` the `rest of the code in getName()` (B), then `pauses on C`
+  - Used when `paused` `inside` of a function that is not related to the problem you're debugging, click Step out Step out to execute the rest of the function's code.
