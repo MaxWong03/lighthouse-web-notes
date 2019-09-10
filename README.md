@@ -27,3 +27,10 @@ This repository contains all of the notes taken by [Max](https://github.com/MaxW
   * [Day 5](/Week_3/Day_5)
   * [Weekend](/Week_3/Weekend)
 
+* [Week 4](/Week_4)
+  * [Day 1](/Week_4/Day_1)
+  * [Day 2](/Week_4/Day_2)
+  * [Day 3](/Week_4/Day_3)
+  * [Day 4](/Week_4/Day_4)
+  * [Day 5](/Week_4/Day_5)
+  * [Weekend](/Week_4/Weekend)
