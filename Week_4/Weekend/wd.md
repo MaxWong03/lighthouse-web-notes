@@ -184,3 +184,10 @@ SELECT SUM(qunaity) FROM groceries;
 9) We can use mathematical and string expressions as well as field names and constants.
 10) The word IN allows us to check if an item is in a list.
 11) The IN operator is a shorthand for multiple OR conditions.
+
+# Advance SQL queries
+* using AUTOINCREMENT in your id where it is a primary key allows the database to figure out the id when you insert
+* AND have more precedence than OR in evaulating expression
+* Using the result of a sql query inside of a IN query allows your selection to be up to date with the table retrieved from the squl query inside of the IN
+* = is an exact match, where as LIKE is an inexact match if you use wildcard, making LIKE more flexible
+* where is used on individual values in the individual rows, having is applied to the group values  
