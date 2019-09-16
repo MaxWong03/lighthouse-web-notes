@@ -177,3 +177,10 @@ SELECT SUM(qunaity) FROM groceries;
 2) char_length
 3) when using > on string, sql compares the length of the string
 4) replace(f, s1, s2), replace the occurance of s1 in string f with s2
+5) SQL LIKE gives you one specific condition, SQL IN gives you multifple condition
+6) You could apply math concepts to sql queries to make the data interesting, for example, you could track population / area, and when you query you do population / area which will give you population density 
+7) You could treat sql like the if part statement of js, evaulation and after evualation if gets you back stuff that meets that criteria, similar to entering a if statement 
+8) You could be createive with your math select phase, and you then use macm logic on the query phase
+9) We can use mathematical and string expressions as well as field names and constants.
+10) The word IN allows us to check if an item is in a list.
+11) The IN operator is a shorthand for multiple OR conditions.
