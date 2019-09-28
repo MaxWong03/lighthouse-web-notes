@@ -25,6 +25,7 @@
   2) `Reference` the `primary key` (unqiue identifier) `in` the other `table` to which you `want to link`
 * `Primary key` is a `column` that `contains` unique `data` such that **no two users have the same data**
 * primary key is called `Foreign key` in the `table` you `linked` 
+* Since primary key uniquely identifies "this" table and foreign key uniquely idenfities "that" table you are linked to, if they are the same that means they are related or they are of the same instances of whoever owns that ID
 
 # DB Things
 * **Removing repetitive data across columns** (`1NF` / first normal form)
