@@ -42,3 +42,4 @@ This repository contains all of the notes taken by [Max](https://github.com/MaxW
 
 * [Week 6](/Week_6)
   * [Weekend](/Week_6/Weekend)
+  * [React](/Week_6/React)
