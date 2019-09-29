@@ -236,14 +236,4 @@ function findById(people, id) {
 * A debounced function will ignore all calls to it until the calls have stopped for a specific time period
 * Throttling is most useful when the input to the function call doesn’t matter, or is the same each time (for instance, a scroll event), whereas debouncing fits best when the result of the most recent event occurrence (for instance, when resizing a window) is what matters to the end user
 
-# React
-* React is declarative
-* React is component-based
-  * Each component can receive data and maintain state
-  * When a component recevies new data or changes its state then it will return element that will be rendered to the DOM
 
-## Props & State
-* TWo concepts in React that assist you in managing data
-* Props are the data passed from a parent component to a child component
-  * Similar to passing arguments to a function, but a component can't change the props passed to it
-* State is private data managed internally by the component. 
