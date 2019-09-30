@@ -45,4 +45,4 @@ This repository contains all of the notes taken by [Max](https://github.com/MaxW
   * [React](/Week_6/React)
 
 * [Week 7](/Week_7)
-* [Day 1](/Week_7/Day_1)
+  * [Day 1](/Week_7/Day_1)
