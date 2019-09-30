@@ -21,7 +21,7 @@ list = 'turn list into a string'
 * `Nested functions` have `access` to `variables` `declared` in their` outer scope`
 * `Functions` in `JS` from `closures`
   - A `clousre` is the `combination` of a `function` and the `lexical environment` within  which that function was `declared`
-  - This `environment` consist of `any local variables` that were `in-scope`` at the time the closure was created`
+  - This `environment` consist of `any local variables` that were `in-scope` at the time the closure was created`
 * `Closures` allows `association` of data (lexical environment) with a `function that operates on the data`
 * You can use a closure anywhere you might normally use an object with only a single method
 
@@ -199,7 +199,6 @@ console.log(myFunction('Michael', 'Jackson', 'Developer', 'California'))
 * The function parameters is suggesting that it wants a first and last name as its first two arguments, but anything you pass in after that will all be added to rest as an array.
 
 # Arrays
-
 
 ## .map()
 * Map takes an array, iterates over it with a function and whatever the function returns will be the replacement value for the item we are currently on
