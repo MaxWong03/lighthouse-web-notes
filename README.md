@@ -57,3 +57,9 @@ This repository contains all of the notes taken by [Max](https://github.com/MaxW
   * [Day 4](/Week_8/Day_4)
   * [Day 5](/Week_8/Day_5)
 
+* [Week 9](/Week_9)
+  * [Day 1](/Week_9/Day_1)
+  * [Day 2](/Week_9/Day_2)
+  * [Day 3](/Week_9/Day_3)
+  * [Day 4](/Week_9/Day_4)
+  * [Day 5](/Week_9/Day_5)
